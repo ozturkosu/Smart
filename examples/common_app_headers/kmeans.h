@@ -8,8 +8,8 @@
 #include <map>
 #include <memory>
 
-#include "chunk.h"
-#include "scheduler.h"
+#include "../../include/chunk.h"
+#include "../../include/scheduler.h"
 
 using namespace std;
 
