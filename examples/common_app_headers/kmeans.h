@@ -13,7 +13,7 @@
 
 using namespace std;
 
-#define NUM_DIMS  8  // The # of dimensions for a point.
+#define NUM_DIMS  1  // The # of dimensions for a point.
 #define NUM_MEANS 4  // The # of clusters/centroids.
 
 #define OBSERVE_CLUSTER_SIZE  0  // Need to obeserve the change of cluster sizes?

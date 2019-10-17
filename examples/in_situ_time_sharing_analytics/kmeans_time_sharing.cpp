@@ -19,8 +19,9 @@
 
 #define NUM_THREADS 4  // The # of threads for analytics task.
 // For k-means application, STEP and NUM_DIMS in kmeans.h must be equal. 
-#define STEP  NUM_DIMS  // The size of unit chunk for each single read, which groups a bunch of elements for mapping and reducing. (E.g., for a relational table, STEP should equal the # of columns.) 
-#define NUM_ELEMS 401  // The total number of elements of the simulated data.
+#define STEP 1
+#define  NUM_DIMS 1// The size of unit chunk for each single read, which groups a bunch of elements for mapping and reducing. (E.g., for a relational table, STEP should equal the # of columns.) 
+#define NUM_ELEMS 800 // The total number of elements of the simulated data.
 #define NUM_ITERS 2  // The # of iterations.
 
 #define PRINT_COMBINATION_MAP 1
@@ -54,9 +55,6 @@ int main(int argc, char* argv[]) {
         out[i] = new double[NUM_DIMS];
     }
 
-
-
-
     //  Shared Memory Part Here
     // Run the given simulation.
 
@@ -66,9 +64,9 @@ int main(int argc, char* argv[]) {
     }
     */
 
-    int n_global = 401;
+    int n_global = 800;
 	//Shared memory sender part
-    const int SIZE = n_global * 8 ;
+    const int SIZE = n_global * sizeof(double) ;
     const char* name = "u_global" ;
 
     //printf(" Size of double %s\n", sizeof(double) );
@@ -93,15 +91,11 @@ int main(int argc, char* argv[]) {
      }
 
      int suc;
-
   	 suc= munmap((void *) data, SIZE) ;
-
   	 cout<< " Number of suc = " << suc << endl ;
 
-     close(shm_fd) ;
-     shm_unlink(name);
-
-
+     //close(shm_fd) ;
+     //shm_unlink(name);
 
      /***************************************/
 
